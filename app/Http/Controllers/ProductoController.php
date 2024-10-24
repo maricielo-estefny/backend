@@ -42,4 +42,18 @@ class ProductoController extends Controller
         $producto->update($request->all());
         return $producto;
     }
+    public function destroy($id){
+        $producto=Producto::findOrFail($id);
+        $producto->delete();
+        return 204;
+    }
+    public function delete($id) {
+        $producto=Producto::findOrFail($id);
+        $producto->delete();
+        return 204;
+    }
+    public function Listado(Request $request){
+        $ListaProducto2=Producto::all();
+        return response()->json($ListaProducto2);
+    }
 }
